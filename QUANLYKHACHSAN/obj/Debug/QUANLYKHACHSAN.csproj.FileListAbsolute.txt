@@ -43,3 +43,10 @@ C:\Users\Linh\Documents\ThucTapNhom-TH13-hotelManagerment\QUANLYKHACHSAN\obj\Deb
 C:\Users\Linh\Documents\ThucTapNhom-TH13-hotelManagerment\QUANLYKHACHSAN\obj\Debug\QUANLYKHACHSAN.csproj.GenerateResource.Cache
 C:\Users\Linh\Documents\ThucTapNhom-TH13-hotelManagerment\QUANLYKHACHSAN\obj\Debug\QUANLYKHACHSAN.exe
 C:\Users\Linh\Documents\ThucTapNhom-TH13-hotelManagerment\QUANLYKHACHSAN\obj\Debug\QUANLYKHACHSAN.pdb
+C:\Users\Linh\Documents\ThucTapNhom-TH13-hotelManagerment\QUANLYKHACHSAN\bin\Debug\BUS.dll
+C:\Users\Linh\Documents\ThucTapNhom-TH13-hotelManagerment\QUANLYKHACHSAN\bin\Debug\Entity.dll
+C:\Users\Linh\Documents\ThucTapNhom-TH13-hotelManagerment\QUANLYKHACHSAN\bin\Debug\DAL.dll
+C:\Users\Linh\Documents\ThucTapNhom-TH13-hotelManagerment\QUANLYKHACHSAN\bin\Debug\BUS.pdb
+C:\Users\Linh\Documents\ThucTapNhom-TH13-hotelManagerment\QUANLYKHACHSAN\bin\Debug\Entity.pdb
+C:\Users\Linh\Documents\ThucTapNhom-TH13-hotelManagerment\QUANLYKHACHSAN\bin\Debug\DAL.pdb
+C:\Users\Linh\Documents\ThucTapNhom-TH13-hotelManagerment\QUANLYKHACHSAN\obj\Debug\QUANLYKHACHSAN.csprojResolveAssemblyReference.cache

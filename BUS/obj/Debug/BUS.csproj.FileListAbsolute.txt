@@ -2,3 +2,8 @@ C:\Users\Linh\Documents\ThucTapNhom-TH13-hotelManagerment\BUS\bin\Debug\BUS.dll
 C:\Users\Linh\Documents\ThucTapNhom-TH13-hotelManagerment\BUS\bin\Debug\BUS.pdb
 C:\Users\Linh\Documents\ThucTapNhom-TH13-hotelManagerment\BUS\obj\Debug\BUS.dll
 C:\Users\Linh\Documents\ThucTapNhom-TH13-hotelManagerment\BUS\obj\Debug\BUS.pdb
+C:\Users\Linh\Documents\ThucTapNhom-TH13-hotelManagerment\BUS\bin\Debug\DAL.dll
+C:\Users\Linh\Documents\ThucTapNhom-TH13-hotelManagerment\BUS\bin\Debug\DAL.pdb
+C:\Users\Linh\Documents\ThucTapNhom-TH13-hotelManagerment\BUS\obj\Debug\BUS.csprojResolveAssemblyReference.cache
+C:\Users\Linh\Documents\ThucTapNhom-TH13-hotelManagerment\BUS\bin\Debug\Entity.dll
+C:\Users\Linh\Documents\ThucTapNhom-TH13-hotelManagerment\BUS\bin\Debug\Entity.pdb
