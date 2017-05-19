@@ -13,7 +13,7 @@ namespace QUANLYKHACHSAN
 {
     public partial class quanlikhachsac : Form
     {
-        string strConn = @"Data Source=PHUONGLINH\SQLEXPRESS;Initial Catalog=QUANlYKHACHSAN;Integrated Security=True";
+        string strConn = @"Data Source=LINH\SQLEXPRESS;Initial Catalog=QUANLYKHACHSAN1;Integrated Security=True";
         SqlConnection conn;
         public string ten;
         public string matkhau;
@@ -87,6 +87,55 @@ namespace QUANLYKHACHSAN
         }
 
         private void toolStripMenuItem6_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            quanlykhachhang kh = new quanlykhachhang();
+            kh.Show();
+            quanlikhachsac fr2 = new quanlikhachsac();
+            fr2.Hide();
+        }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            quanlythuetra kh = new quanlythuetra();
+            kh.Show();
+            quanlikhachsac fr2 = new quanlikhachsac();
+            fr2.Hide();
+
+        }
+
+        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            quanlyphong kh = new quanlyphong();
+            kh.Show();
+            quanlikhachsac fr2 = new quanlikhachsac();
+            fr2.Hide();
+
+        }
+
+        private void toolStripMenuItem5_Click(object sender, EventArgs e)
+        {
+            Quanlydichvu kh = new Quanlydichvu();
+            kh.Show();
+            quanlikhachsac fr2 = new quanlikhachsac();
+            fr2.Hide();
+
+        }
+
+        private void btsuattnv_Click(object sender, EventArgs e)
+        {
+            quanlynv kh = new quanlynv();
+            kh.Show();
+            quanlikhachsac fr2 = new quanlikhachsac();
+            fr2.Hide();
+
+        }
+
+        private void btdangxuat_Click(object sender, EventArgs e)
         {
             this.Hide();
         }

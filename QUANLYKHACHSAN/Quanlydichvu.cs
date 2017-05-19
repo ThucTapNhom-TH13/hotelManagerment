@@ -13,163 +13,123 @@ namespace QUANLYKHACHSAN
 {
     public partial class Quanlydichvu : Form
     {
+        public string strConnection = @"Data Source=LINH\SQLEXPRESS;Initial Catalog=QUANLYKHACHSAN1;Integrated Security=True";
+        public SqlConnection conn = null;
         public Quanlydichvu()
         {
             InitializeComponent();
         }
-
-        void enableTextBox(bool madv, bool tendv, bool gia, bool soluong)
+        private void loadData()
         {
-            textBox1.Enabled = madv;
-            textBox2.Enabled = tendv;
-            textBox3.Enabled = gia;
-            textBox4.Enabled = soluong;
-        }
-
-        void clearTextBox(bool madv, bool tendv, bool gia, bool soluong)
-        {
-            if (madv)
-                textBox1.Text = "";
-            if (tendv)
-                textBox2.Text = "";
-            if (gia)
-                textBox3.Text = "";
-            if (soluong)
-                textBox4.Text = "";
+            SqlDataAdapter da = new SqlDataAdapter("SELECT* FROM DICHVU", conn);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            dataGridView1.DataSource = dt;
         }
 
         private void Quanlydichvu_Load(object sender, EventArgs e)
         {
-            enableTextBox(false, false, false, false);
-            dataGridView1.DataSource = BUS.DichVu_BUS.DichVu_getAll();
+            conn = new SqlConnection(strConnection);
+            conn.Open();
+            loadData();
+
         }
-        
+
+        private void dataGridView1_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        {
+            dataGridView1.Rows[e.RowIndex].Cells["STT"].Value = e.RowIndex + 1;
+        }
+
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            String madv = "", giatien = "", tendv = "", soluong = "";
-            int CurrentIndex = dataGridView1.CurrentCell.RowIndex;
+            textBox1.Text = Convert.ToString(dataGridView1.CurrentRow.Cells["GIATIEN"].Value);
+            textBox2.Text = Convert.ToString(dataGridView1.CurrentRow.Cells["MADV"].Value);
+            textBox3.Text = Convert.ToString(dataGridView1.CurrentRow.Cells["TENDV"].Value);
 
-            if (dataGridView1.Rows[CurrentIndex].Cells[0].Value != null)
-            {
-                madv = dataGridView1.Rows[CurrentIndex].Cells[0].Value.ToString();
-                textBox1.Text = madv;
-            }
-            if (dataGridView1.Rows[CurrentIndex].Cells[1].Value != null)
-            {
-                tendv = dataGridView1.Rows[CurrentIndex].Cells[1].Value.ToString();
-                textBox2.Text = tendv;
-            }
-            if (dataGridView1.Rows[CurrentIndex].Cells[3].Value != null)
-            {
-                giatien = dataGridView1.Rows[CurrentIndex].Cells[3].Value.ToString();
-                textBox3.Text = soluong;
-            }
-            if (dataGridView1.Rows[CurrentIndex].Cells[2].Value != null)
-            {
-                soluong = dataGridView1.Rows[CurrentIndex].Cells[2].Value.ToString();
-                textBox4.Text = soluong;
-            }
+            comboBox1.Text = Convert.ToString(dataGridView1.CurrentRow.Cells["SOLUONG"].Value);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (button1.Text.Equals("Thêm"))
+            try
             {
-                button1.Text = "Lưu";
-                button2.Text = "Hủy";
-                clearTextBox(true, true, true, true);
-                enableTextBox(false, true, true, true);
-            }
-            else if (button1.Text.Equals("Hủy"))
-            {
-                button1.Text = "Thêm";
-                button2.Text = "Sửa";
-                clearTextBox(true, true, true, true);
-                enableTextBox(false, false, false, false);
-            }
-            else if (button1.Text.Equals("Lưu"))
-            {
-                try
+                SqlCommand cmd = new SqlCommand("sp_dv", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlParameter p = new SqlParameter("@TEN", textBox3.Text);
+                cmd.Parameters.Add(p);
+                p = new SqlParameter("@GIA", textBox1.Text);
+                cmd.Parameters.Add(p);
+                p = new SqlParameter("@SOLUONG", comboBox1.Text);
+                cmd.Parameters.Add(p);
+
+                int count = cmd.ExecuteNonQuery();
+                if (count > 0)
                 {
-                    String tendv = textBox2.Text;
-                    Int32 soluong = Int32.Parse(textBox4.Text);
-                    Double gia = Double.Parse(textBox3.Text);
-                    Entity.DichVu dichvu = new Entity.DichVu(tendv, soluong, gia);
-                    bool result = BUS.DichVu_BUS.DichVu_add(dichvu);
-                    if (result)
-                    {
-                        clearTextBox(true, true, true, true);
-                        enableTextBox(false, false, false, false);
-                    }
-                    else
-                    {
-                        System.Windows.Forms.MessageBox.Show("Thêm thất bại");
-                    }
+                    MessageBox.Show("Thêm mới thành công");
+                    loadData();
                 }
-                catch
-                {
-                    System.Windows.Forms.MessageBox.Show("Dữ liệu không hợp lệ");
-                }
+
+                else MessageBox.Show("Không thể thêm mới");
+            }
+            catch
+            {
 
             }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (button2.Text.Equals("Sửa"))
+            SqlCommand cmd = new SqlCommand("sp_Suadv", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            SqlParameter p = new SqlParameter("@MA", textBox2.Text);
+            cmd.Parameters.Add(p);
+
+            p = new SqlParameter("@TEN", textBox3.Text);
+            cmd.Parameters.Add(p);
+
+            p = new SqlParameter("@Gia", textBox1.Text);
+            cmd.Parameters.Add(p);
+            p = new SqlParameter("@SOLUONG", comboBox1.Text);
+            cmd.Parameters.Add(p);
+            int count = cmd.ExecuteNonQuery();
+
+            if (count > 0)
             {
-                String madv = textBox1.Text.ToString();
-                if (!"".Equals(madv.Trim()))
-                {
-                    button1.Text = "Hủy";
-                    button2.Text = "Lưu";
-                    clearTextBox(false, true, true, true);
-                    enableTextBox(false, true, true, true);
-                }
+                MessageBox.Show("Sửa thành công!");
+                loadData();
             }
-            else if (button2.Text.Equals("Hủy"))
-            {
-                button1.Text = "Thêm";
-                button2.Text = "Sửa";
-                clearTextBox(true, true, true, true);
-                enableTextBox(false, false, false, false);
-            }
-            else if (button2.Text.Equals("Lưu"))
-            {
-                try {
-                    Int32 madv = Int32.Parse(textBox1.Text);
-                    String tendv = textBox2.Text;
-                    Int32 soluong = Int32.Parse(textBox4.Text);
-                    Double gia = Double.Parse(textBox3.Text);
-                    Entity.DichVu dichvu = new Entity.DichVu(madv, tendv, soluong, gia);
-                    bool result = BUS.DichVu_BUS.DichVu_update(dichvu);
-                    if (result)
-                    {
-                        clearTextBox(true, true, true, true);
-                        enableTextBox(false, false, false, false);
-                    }
-                    else
-                    {
-                        System.Windows.Forms.MessageBox.Show("Thêm thất bại");
-                    }
-                }
-                catch
-                {
-                    System.Windows.Forms.MessageBox.Show("Dữ liệu không hợp lệ");
-                }
-            }
+            else MessageBox.Show("Không sửa được!");
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text.Trim().Equals(""))
+            if (MessageBox.Show("Bạn có chắc chắn muôn xóa bản ghi đang chọn không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                System.Windows.Forms.MessageBox.Show("Chọn 1 dịch vụ cần xóa");
-            }
-            else
-            {
+                SqlCommand cmd = new SqlCommand("sp_Xoadv", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
 
+                SqlParameter p = new SqlParameter("@Ma", textBox2.Text);
+                cmd.Parameters.Add(p);
+
+                int count = cmd.ExecuteNonQuery();
+
+                if (count > 0)
+                {
+                    MessageBox.Show("Xóa thành công!");
+                    loadData();
+                    textBox1.Text = "";
+                    textBox2.Text = "";
+                    textBox3.Text = "";
+
+                }
+                else MessageBox.Show("Không thể xóa bản ghi hiện thời!");
             }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.Hide();
         }
     }
 }

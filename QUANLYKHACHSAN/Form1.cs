@@ -7,7 +7,7 @@ namespace QUANLYKHACHSAN
 {
     public partial class Form1 : Form
     {
-        string strConnection = @"Data Source=PHUONGLINH\SQLEXPRESS;Initial Catalog=QUANlYKHACHSAN;Integrated Security=True";
+        string strConnection = @"Data Source=LINH\SQLEXPRESS;Initial Catalog=QUANLYKHACHSAN1;Integrated Security=True";
         SqlConnection conn;
         SqlCommand coman;
         SqlCommand coman1;

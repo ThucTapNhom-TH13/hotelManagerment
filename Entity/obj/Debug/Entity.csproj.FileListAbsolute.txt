@@ -2,4 +2,3 @@ C:\Users\Linh\Documents\ThucTapNhom-TH13-hotelManagerment\Entity\bin\Debug\Entit
 C:\Users\Linh\Documents\ThucTapNhom-TH13-hotelManagerment\Entity\bin\Debug\Entity.pdb
 C:\Users\Linh\Documents\ThucTapNhom-TH13-hotelManagerment\Entity\obj\Debug\Entity.dll
 C:\Users\Linh\Documents\ThucTapNhom-TH13-hotelManagerment\Entity\obj\Debug\Entity.pdb
-C:\Users\Linh\Documents\ThucTapNhom-TH13-hotelManagerment\Entity\obj\Debug\Entity.csprojResolveAssemblyReference.cache
