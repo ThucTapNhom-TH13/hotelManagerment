@@ -61,3 +61,6 @@ C:\Users\Nguyen Linh\Documents\GitHub\hotelManagerment\QUANLYKHACHSAN\obj\Debug\
 C:\Users\Nguyen Linh\Documents\GitHub\QuanLyKhachSan\QUANLYKHACHSAN\bin\Debug\QUANLYKHACHSAN.exe.config
 C:\Users\Nguyen Linh\Documents\GitHub\QuanLyKhachSan\QUANLYKHACHSAN\obj\Debug\QUANLYKHACHSAN.exe
 C:\Users\Nguyen Linh\Documents\GitHub\QuanLyKhachSan\QUANLYKHACHSAN\obj\Debug\QUANLYKHACHSAN.pdb
+F:\hotelManagerment\QUANLYKHACHSAN\bin\Debug\QUANLYKHACHSAN.exe.config
+F:\hotelManagerment\QUANLYKHACHSAN\obj\Debug\QUANLYKHACHSAN.exe
+F:\hotelManagerment\QUANLYKHACHSAN\obj\Debug\QUANLYKHACHSAN.pdb
