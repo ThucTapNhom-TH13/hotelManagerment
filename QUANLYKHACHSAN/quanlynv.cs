@@ -42,7 +42,6 @@ namespace QUANLYKHACHSAN
         }
         public void UnEnebal()
         {
-            txtMa_NV.Enabled = true;
             txtTen_NV.Enabled = true;
             txtDiaChi.Enabled = true;
             txtSDT.Enabled = true;
@@ -56,9 +55,8 @@ namespace QUANLYKHACHSAN
             txtMa_NV.DataBindings.Add("Text", dgvNhan_Vien.DataSource, "MANV");
             txtTen_NV.DataBindings.Clear();
             txtTen_NV.DataBindings.Add("Text", dgvNhan_Vien.DataSource, "TENNV");
-            rdbNam.DataBindings.Clear();
-            rdbNam.DataBindings.Add("Text", dgvNhan_Vien.DataSource, "GIOITINH");
-            if (rdbNam.Text == "1")
+   
+            if (rdbNam.Text == "False")
             {
 
                 rdbNam.Checked = true;
@@ -78,11 +76,19 @@ namespace QUANLYKHACHSAN
 
         private void quanlynv_Load(object sender, EventArgs e)
         {
+            Enebal();
+            showNhan_vien();
+            buidingNhan_Vien();
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
 
         }
 
-        private void btnThem_Click(object sender, EventArgs e)
+        private void btnThem_Click_1(object sender, EventArgs e)
         {
+            int n = 0;
             if (btnThem.Text == "Thêm")
             {
                 UnEnebal();
@@ -96,50 +102,38 @@ namespace QUANLYKHACHSAN
                 btnThem.Text = "Thêm";
                 btnSua.Text = "Sửa";
                 btnXoa.Enabled = true;
-                if (!Catch.cNullTB(txtMa_NV.Text) & !Catch.cNullTB(txtTen_NV.Text) & !Catch.cNullTB(txtDiaChi.Text) & !Catch.cNullTB(txtSDT.Text) & !Catch.cNullTB(txtSDT.Text))
+                if ( !Catch.cNullTB(txtTen_NV.Text) & !Catch.cNullTB(txtDiaChi.Text) & !Catch.cNullTB(txtSDT.Text) & !Catch.cNullTB(txtSDT.Text))
                 {
                     try
                     {
-                        int manv = Convert.ToInt32(txtMa_NV.Text.Trim());
-                        string tennv = txtTen_NV.Text.Trim();
-                        string diachi = txtDiaChi.Text.Trim();
-                        byte gioitinh = Convert.ToByte(txtMK.Text.Trim());
-                        string sdt = txtSDT.Text.Trim();
-                        int mk = Convert.ToInt32(txtMK.Text.Trim());
+                        if (rdbNam.Checked == true)
+                        {
+                            byte gioitinh = 0;
+                            string tennv = txtTen_NV.Text.Trim();
+                            string diachi = txtDiaChi.Text.Trim();
+                            string sdt = txtSDT.Text.Trim();
+                            int mk = Convert.ToInt32(txtMK.Text.Trim());
+                           
+                            tblNhanVien nv = new tblNhanVien(tennv, gioitinh, sdt, diachi, mk);
+                            tblNhan_vien_BUS.addNhan_vien(nv);
+                            showNhan_vien();
+                            buidingNhan_Vien();
+                            Enebal();
+                        }
+                        else
+                        {
+                            byte gioitinh = 1;
+                            string tennv = txtTen_NV.Text.Trim();
+                            string diachi = txtDiaChi.Text.Trim();
+                            string sdt = txtSDT.Text.Trim();
+                            int mk = Convert.ToInt32(txtMK.Text.Trim());
 
-                        tblNhanVien nv = new tblNhanVien(manv, tennv, gioitinh, sdt, diachi, mk);
-                        tblNhan_vien_BUS.addNhan_vien(nv);
-                        showNhan_vien();
-                        buidingNhan_Vien();
-                        Enebal();
-                    }
-                    catch
-                    {
-                        MessageBox.Show("Loi");
-                    }
-                }
-            }
-            else if (btnThem.Text == "Lưu ")
-            {
-                btnThem.Text = "Thêm";
-                btnSua.Text = "Sửa";
-                btnXoa.Enabled = true;
-                if (!Catch.cNullTB(txtMa_NV.Text) & !Catch.cNullTB(txtTen_NV.Text) & !Catch.cNullTB(txtDiaChi.Text) & !Catch.cNullTB(txtSDT.Text) & !Catch.cNullTB(txtSDT.Text))
-                {
-                    try
-                    {
-                        int manv = Convert.ToInt32(txtMa_NV.Text.Trim());
-                        string tennv = txtTen_NV.Text.Trim();
-                        byte gioitinh = Convert.ToByte(txtMK.Text.Trim());
-                        string diachi = txtDiaChi.Text.Trim();
-                        string sdt = txtSDT.Text.Trim();
-                        int mk = Convert.ToInt32(txtMK.Text.Trim());
-
-                        tblNhanVien nv = new tblNhanVien(manv, tennv, gioitinh, sdt,diachi, mk);
-                        tblNhan_vien_BUS.updateNhan_vien(nv);
-                        showNhan_vien();
-                        buidingNhan_Vien();
-                        Enebal();
+                            tblNhanVien nv = new tblNhanVien(tennv, gioitinh, sdt, diachi, mk);
+                            tblNhan_vien_BUS.addNhan_vien(nv);
+                            showNhan_vien();
+                            buidingNhan_Vien();
+                            Enebal();
+                        }
                     }
                     catch
                     {
@@ -148,7 +142,93 @@ namespace QUANLYKHACHSAN
                 }
                 else
                 {
-                    MessageBox.Show("Chưa nhập dữ liệu");
+                    if (txtTen_NV.Text.Trim().Length == 0)
+                    {
+                        errorNhanVien.SetError(txtTen_NV, "không được bỏ trống");
+                    }
+                    if (txtDiaChi.Text.Trim().Length == 0)
+                    {
+                        errorNhanVien.SetError(txtDiaChi, "không được bỏ trống");
+                    }
+                    if (txtMK.Text.Trim().Length == 0)
+                    {
+                        errorNhanVien.SetError(txtMK, "không được bỏ trống");
+                    }
+                    if (int.TryParse(txtSDT.Text.Trim(), out n) == false)
+                    {
+                        errorNhanVien.SetError(txtSDT, "không được nhập số");
+                    }
+                    if (txtSDT.Text.Trim().Length == 0)
+                    {
+                        errorNhanVien.SetError(txtSDT, "không được bỏ trống");
+                    }
+                }
+            }
+            else if (btnThem.Text == "Lưu ")
+            {
+                btnThem.Text = "Thêm";
+                btnSua.Text = "Sửa";
+                btnXoa.Enabled = true;
+                if (!Catch.cNullTB(txtTen_NV.Text) & !Catch.cNullTB(txtDiaChi.Text) & !Catch.cNullTB(txtSDT.Text) & !Catch.cNullTB(txtSDT.Text))
+                {
+                    try
+                    {
+                        if (rdbNam.Checked == true)
+                        {
+                            byte gioitinh = 0;
+                            string tennv = txtTen_NV.Text.Trim();
+                            string diachi = txtDiaChi.Text.Trim();
+                            string sdt = txtSDT.Text.Trim();
+                            int mk = Convert.ToInt32(txtMK.Text.Trim());
+
+                            tblNhanVien nv = new tblNhanVien(tennv, gioitinh, sdt, diachi, mk);
+                            tblNhan_vien_BUS.updateNhan_vien(nv);
+                            showNhan_vien();
+                            buidingNhan_Vien();
+                            Enebal();
+                        }
+                        else
+                        {
+                            byte gioitinh = 1;
+                            string tennv = txtTen_NV.Text.Trim();
+                            string diachi = txtDiaChi.Text.Trim();
+                            string sdt = txtSDT.Text.Trim();
+                            int mk = Convert.ToInt32(txtMK.Text.Trim());
+
+                            tblNhanVien nv = new tblNhanVien(tennv, gioitinh, sdt, diachi, mk);
+                            tblNhan_vien_BUS.updateNhan_vien(nv);
+                            showNhan_vien();
+                            buidingNhan_Vien();
+                            Enebal();
+                        }
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Loi");
+                    }
+                }
+                else
+                {
+                    if (txtTen_NV.Text.Trim().Length == 0)
+                    {
+                        errorNhanVien.SetError(txtTen_NV, "không được bỏ trống");
+                    }
+                    if (txtDiaChi.Text.Trim().Length == 0)
+                    {
+                        errorNhanVien.SetError(txtDiaChi, "không được bỏ trống");
+                    }
+                    if (txtMK.Text.Trim().Length == 0)
+                    {
+                        errorNhanVien.SetError(txtMK, "không được bỏ trống");
+                    }
+                    if (int.TryParse(txtSDT.Text.Trim(), out n) == false)
+                    {
+                        errorNhanVien.SetError(txtSDT, "không được nhập số");
+                    }
+                    if (txtSDT.Text.Trim().Length == 0)
+                    {
+                        errorNhanVien.SetError(txtSDT, "không được bỏ trống");
+                    }
                 }
             }
 
@@ -160,7 +240,7 @@ namespace QUANLYKHACHSAN
             {
                 UnEnebal();
                 txtMa_NV.Enabled = false;
-                btnThem.Text = "Lưu Sửa";
+                btnThem.Text = "Lưu ";
                 btnSua.Text = "Cannel";
                 btnXoa.Enabled = false;
 
@@ -191,9 +271,9 @@ namespace QUANLYKHACHSAN
             }
         }
 
-private void textBox2_TextChanged(object sender, EventArgs e)
+        private void txtSDT_TextChanged(object sender, EventArgs e)
         {
-
+            
         }
     }
 }

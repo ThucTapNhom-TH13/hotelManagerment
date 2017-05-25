@@ -103,5 +103,13 @@ namespace Entity
             this.diachi = diachi;
             this.mk = mk;
         }
+        public tblNhanVien( string tennv, int gioitinh, string sdt, string diachi, int mk)
+        {
+            this.tennv = tennv;
+            this.gioitinh = gioitinh;
+            this.sdt = sdt;
+            this.diachi = diachi;
+            this.mk = mk;
+        }
     }
 }

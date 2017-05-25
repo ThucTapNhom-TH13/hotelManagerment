@@ -29,14 +29,11 @@ namespace DAL
             SqlConnection conn = SqlConnect.Connect();
             SqlCommand cmd = new SqlCommand("THEM_NHAN_VIEN", conn);
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add("@MA_NV", SqlDbType.Int);
             cmd.Parameters.Add("@TEN_NV", SqlDbType.NVarChar, 50);
             cmd.Parameters.Add("@GIOI_TINH", SqlDbType.Bit);
             cmd.Parameters.Add("@SDT", SqlDbType.Int);
             cmd.Parameters.Add("@DIA_CHI", SqlDbType.NVarChar, 50);
-            cmd.Parameters.Add("@PICTURE", SqlDbType.NVarChar, 10000);
             cmd.Parameters.Add("@MK", SqlDbType.Int);
-            cmd.Parameters["@MA_NV"].Value = nv.Manv;
             cmd.Parameters["@TEN_NV"].Value = nv.Tennv;
             cmd.Parameters["@GIOI_TINH"].Value = nv.Gioitinh;
             cmd.Parameters["@SDT"].Value = nv.Sdt;
@@ -57,7 +54,6 @@ namespace DAL
             cmd.Parameters.Add("@GIOI_TINH", SqlDbType.Bit);
             cmd.Parameters.Add("@SDT", SqlDbType.Int);
             cmd.Parameters.Add("@DIA_CHI", SqlDbType.NVarChar, 50);
-            cmd.Parameters.Add("@PICTURE", SqlDbType.NVarChar, 10000);
             cmd.Parameters.Add("@MK", SqlDbType.Int);
             cmd.Parameters["@MA_NV"].Value = nv.Manv;
             cmd.Parameters["@TEN_NV"].Value = nv.Tennv;
