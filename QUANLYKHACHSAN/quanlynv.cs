@@ -102,7 +102,7 @@ namespace QUANLYKHACHSAN
                 btnThem.Text = "Thêm";
                 btnSua.Text = "Sửa";
                 btnXoa.Enabled = true;
-                if ( !Catch.cNullTB(txtTen_NV.Text) & !Catch.cNullTB(txtDiaChi.Text) & !Catch.cNullTB(txtSDT.Text) & !Catch.cNullTB(txtSDT.Text))
+                if ( !Catch.cNullTB(txtTen_NV.Text) & !Catch.cNullTB(txtDiaChi.Text) & !Catch.cNullTB(txtSDT.Text) & !Catch.cNullTB(txtMK.Text))
                 {
                     try
                     {
@@ -169,7 +169,7 @@ namespace QUANLYKHACHSAN
                 btnThem.Text = "Thêm";
                 btnSua.Text = "Sửa";
                 btnXoa.Enabled = true;
-                if (!Catch.cNullTB(txtTen_NV.Text) & !Catch.cNullTB(txtDiaChi.Text) & !Catch.cNullTB(txtSDT.Text) & !Catch.cNullTB(txtSDT.Text))
+                if (!Catch.cNullTB(txtTen_NV.Text) & !Catch.cNullTB(txtDiaChi.Text) & !Catch.cNullTB(txtSDT.Text) & !Catch.cNullTB(txtMK.Text))
                 {
                     try
                     {
