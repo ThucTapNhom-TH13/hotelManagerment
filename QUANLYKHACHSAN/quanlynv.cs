@@ -93,6 +93,8 @@ namespace QUANLYKHACHSAN
             {
                 UnEnebal();
                 clearData();
+                errorNhanVien.Clear();
+                txtMa_NV.Enabled = false;
                 btnThem.Text = "Lưu";
                 btnSua.Text = "Cannel";
                 btnXoa.Enabled = false;
@@ -137,6 +139,10 @@ namespace QUANLYKHACHSAN
                     }
                     catch
                     {
+                        if (int.TryParse(txtSDT.Text.Trim(), out n) == false)
+                        {
+                            errorNhanVien.SetError(txtSDT, "không được nhập chữ");
+                        }
                         MessageBox.Show("Loi");
                     }
                 }
@@ -154,15 +160,13 @@ namespace QUANLYKHACHSAN
                     {
                         errorNhanVien.SetError(txtMK, "không được bỏ trống");
                     }
-                    if (int.TryParse(txtSDT.Text.Trim(), out n) == false)
-                    {
-                        errorNhanVien.SetError(txtSDT, "không được nhập số");
-                    }
+                    
                     if (txtSDT.Text.Trim().Length == 0)
                     {
                         errorNhanVien.SetError(txtSDT, "không được bỏ trống");
                     }
                 }
+                Enebal();
             }
             else if (btnThem.Text == "Lưu ")
             {
@@ -204,6 +208,10 @@ namespace QUANLYKHACHSAN
                     }
                     catch
                     {
+                        if (int.TryParse(txtSDT.Text.Trim(), out n) == false)
+                        {
+                            errorNhanVien.SetError(txtSDT, "không được nhập chữ");
+                        }
                         MessageBox.Show("Loi");
                     }
                 }
@@ -221,17 +229,14 @@ namespace QUANLYKHACHSAN
                     {
                         errorNhanVien.SetError(txtMK, "không được bỏ trống");
                     }
-                    if (int.TryParse(txtSDT.Text.Trim(), out n) == false)
-                    {
-                        errorNhanVien.SetError(txtSDT, "không được nhập số");
-                    }
+                    
                     if (txtSDT.Text.Trim().Length == 0)
                     {
                         errorNhanVien.SetError(txtSDT, "không được bỏ trống");
                     }
                 }
+                Enebal();
             }
-
         }
 
         private void btnSua_Click(object sender, EventArgs e)
@@ -239,6 +244,7 @@ namespace QUANLYKHACHSAN
             if (btnSua.Text == "Sửa")
             {
                 UnEnebal();
+                errorNhanVien.Clear();
                 txtMa_NV.Enabled = false;
                 btnThem.Text = "Lưu ";
                 btnSua.Text = "Cannel";
