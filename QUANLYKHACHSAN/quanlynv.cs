@@ -144,6 +144,10 @@ namespace QUANLYKHACHSAN
                         {
                             errorNhanVien.SetError(txtSDT, "không được nhập chữ");
                         }
+                        if (int.TryParse(txtMK.Text.Trim(), out n) == false)
+                        {
+                            errorNhanVien.SetError(txtMK, "không được nhập chữ");
+                        }
                         MessageBox.Show("Loi");
                     }
                 }

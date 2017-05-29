@@ -46,13 +46,13 @@
             this.txtSDT = new System.Windows.Forms.TextBox();
             this.txtMK = new System.Windows.Forms.TextBox();
             this.txtDiaChi = new System.Windows.Forms.TextBox();
+            this.errorNhanVien = new System.Windows.Forms.ErrorProvider(this.components);
             this.MA_NV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TEN_NV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GIOI_TINH = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SDT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DIA_CHI = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MA_KHAU = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.errorNhanVien = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvNhan_Vien)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorNhanVien)).BeginInit();
             this.SuspendLayout();
@@ -218,12 +218,17 @@
             this.txtDiaChi.Size = new System.Drawing.Size(191, 20);
             this.txtDiaChi.TabIndex = 19;
             // 
+            // errorNhanVien
+            // 
+            this.errorNhanVien.ContainerControl = this;
+            // 
             // MA_NV
             // 
             this.MA_NV.DataPropertyName = "MANV";
             this.MA_NV.HeaderText = "Mã Nhân Viên";
             this.MA_NV.Name = "MA_NV";
             this.MA_NV.ReadOnly = true;
+            this.MA_NV.Width = 80;
             // 
             // TEN_NV
             // 
@@ -238,6 +243,7 @@
             this.GIOI_TINH.HeaderText = "Giới Tính";
             this.GIOI_TINH.Name = "GIOI_TINH";
             this.GIOI_TINH.ReadOnly = true;
+            this.GIOI_TINH.Width = 60;
             // 
             // SDT
             // 
@@ -259,10 +265,6 @@
             this.MA_KHAU.HeaderText = "Mật Khẩu";
             this.MA_KHAU.Name = "MA_KHAU";
             this.MA_KHAU.ReadOnly = true;
-            // 
-            // errorNhanVien
-            // 
-            this.errorNhanVien.ContainerControl = this;
             // 
             // quanlynv
             // 
@@ -315,12 +317,12 @@
         private System.Windows.Forms.TextBox txtSDT;
         private System.Windows.Forms.TextBox txtMK;
         private System.Windows.Forms.TextBox txtDiaChi;
+        private System.Windows.Forms.ErrorProvider errorNhanVien;
         private System.Windows.Forms.DataGridViewTextBoxColumn MA_NV;
         private System.Windows.Forms.DataGridViewTextBoxColumn TEN_NV;
         private System.Windows.Forms.DataGridViewTextBoxColumn GIOI_TINH;
         private System.Windows.Forms.DataGridViewTextBoxColumn SDT;
         private System.Windows.Forms.DataGridViewTextBoxColumn DIA_CHI;
         private System.Windows.Forms.DataGridViewTextBoxColumn MA_KHAU;
-        private System.Windows.Forms.ErrorProvider errorNhanVien;
     }
 }
