@@ -97,13 +97,14 @@ namespace QUANLYKHACHSAN
                 txtMa_NV.Enabled = false;
                 btnThem.Text = "Lưu";
                 btnSua.Text = "Cannel";
-                btnXoa.Enabled = false;
+                btnXoa.Visible = false;
+                txtMK.DataBindings.Clear();
             }
             else if (btnThem.Text == "Lưu")
             {
                 btnThem.Text = "Thêm";
                 btnSua.Text = "Sửa";
-                btnXoa.Enabled = true;
+                btnXoa.Visible = true;
                 if ( !Catch.cNullTB(txtTen_NV.Text) & !Catch.cNullTB(txtDiaChi.Text) & !Catch.cNullTB(txtSDT.Text) & !Catch.cNullTB(txtMK.Text))
                 {
                     try
@@ -172,7 +173,7 @@ namespace QUANLYKHACHSAN
             {
                 btnThem.Text = "Thêm";
                 btnSua.Text = "Sửa";
-                btnXoa.Enabled = true;
+                btnXoa.Visible = true;
                 if (!Catch.cNullTB(txtTen_NV.Text) & !Catch.cNullTB(txtDiaChi.Text) & !Catch.cNullTB(txtSDT.Text) & !Catch.cNullTB(txtMK.Text))
                 {
                     try
@@ -248,15 +249,17 @@ namespace QUANLYKHACHSAN
                 txtMa_NV.Enabled = false;
                 btnThem.Text = "Lưu ";
                 btnSua.Text = "Cannel";
-                btnXoa.Enabled = false;
+                btnXoa.Visible = false;
 
             }
             else
             {
                 btnThem.Text = "Thêm";
                 btnSua.Text = "Sửa";
-                btnXoa.Enabled = true;
+                btnXoa.Visible = true;
                 Enebal();
+                showNhan_vien();
+                buidingNhan_Vien();
             }
         }
 
